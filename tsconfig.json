@@ -1,16 +1,22 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
+    // "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "lib": ["es2017"],
+    // "lib": ["es2017"],
+    "lib": ["esnext"],
     "removeComments": true,
+    "module": "esnext",
     "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "sourceMap": true,
-    "target": "es2017",
+    "strict": true,
+    "target": "es2019",
     "outDir": "lib"
   },
-  "include": ["./**/*.ts"],
-  "exclude": ["node_modules/**/*", ".serverless/**/*", ".webpack/**/*", "_warmup/**/*", ".vscode/**/*"]
+  // "include": ["./**/*.ts"],
+  "include": ["src"],
+  // "exclude": ["node_modules/**/*", ".serverless/**/*", ".webpack/**/*", "_warmup/**/*", ".vscode/**/*"]
 }
