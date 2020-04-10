@@ -1,5 +1,5 @@
 import SQS from "aws-sdk/clients/sqs";
-import { doSomething } from "./BananaBread";
+import { doSomething } from "./CoffeeCup";
 
 jest.mock("aws-sdk/clients/sqs");
 const sqs = (SQS as unknown) as jest.Mock;
@@ -8,11 +8,12 @@ sqs.mockImplementationOnce(() => ({ getQueueUrl }));
 
 test("doSomething should do something", async () => {
   const queueName = "the queue name";
-  const url = "the url";
+  const expectedQueueUrl = "the url";
 
-  getQueueUrl.mockReturnValue({ promise: () => ({ QueueUrl: url }) });
+  getQueueUrl.mockReturnValue({ promise: () => ({ QueueUrl: expectedQueueUrl }) });
 
-  await doSomething(queueName);
+  const actualQueueUrl = await doSomething(queueName);
 
   expect(getQueueUrl).toHaveBeenCalledWith({ QueueName: queueName });
+  expect(actualQueueUrl).toEqual(expectedQueueUrl);
 });
